@@ -16,6 +16,7 @@ class AlbumController extends Controller
     public function index()
     {
         return AlbumResource::collection(Album::paginate(20));
+
     }
 
     /**
@@ -24,7 +25,7 @@ class AlbumController extends Controller
     public function store(StoreAlbumRequest $request)
     {
       $album =Album::create($request->all());
-      return  $album;
+      return new AlbumResource($album);
     }
 
     /**
@@ -32,7 +33,7 @@ class AlbumController extends Controller
      */
     public function show(Album $album)
     {
-        return $album;
+        return new AlbumResource($album);
     }
 
     /**
@@ -41,7 +42,7 @@ class AlbumController extends Controller
     public function update(UpdateAlbumRequest $request, Album $album)
     {
         $album->update($request->all());
-        return $album;
+        return new AlbumResource($album);
     }
 
     /**
