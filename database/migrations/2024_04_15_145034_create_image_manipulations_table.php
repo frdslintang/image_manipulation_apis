@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Album;
+use App\Models\V1\Album;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
