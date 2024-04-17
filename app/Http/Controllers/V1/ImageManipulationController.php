@@ -24,7 +24,7 @@ class ImageManipulationController extends Controller
     }
 
     //ini create
-    public function byAlbum(Album $request){
+    public function byAlbum(Album $album){
 
     }
 
@@ -51,11 +51,11 @@ class ImageManipulationController extends Controller
             $data['album_id'] = $all['album_id'];
         }
 
-
-        $dir = 'images/'.Str::random().'/';
+        $dir = 'images/' . Str::random() . '/';
         $absolutePath = public_path($dir);
-        File::makeDirectory($absolutePath);
-
+        if (!File::exists($absolutePath)) {
+            File::makeDirectory($absolutePath, 0755, true);
+        }
         //menyimpan gambar di database
         //image/dash2j3da/test.jpg
         //image/dash2j3da/test-resized.jpg

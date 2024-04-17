@@ -25,9 +25,9 @@ class ResizeImageRequest extends FormRequest
         $rules = [
             //implenetasikan validasi resize
             'image' => ['required'],
-            'w' => ['required', 'regex:/^\d+(\.\d+)?%?/'], //10", "3.14", "50%", "0.5%"
-            'h' =>  'regex:/^\d+(\.\d+)?%?/',
-            'album_id' => 'exists:Album,id'
+            'w' => ['required', 'regex:/^\d+(\.\d+)?%?$/'],
+            'h' => 'regex:/^\d+(\.\d+)?%?$/',
+            'album_id' => 'exists:\App\Models\V1\Album,id'
         ];
 
         $image = $this->all()['image'] ?? false;
